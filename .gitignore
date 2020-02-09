@@ -1,3 +1,12 @@
 .DS_Store
 assets/.DS_Store
+solution/.idea
+solution/.idea/**
+solution/target
+solution/target/**
+solution/pom.xml
+solution/solution.iml
+solution/src/test/**
+solution/main/resources/**
+
 
