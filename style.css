@@ -1,0 +1,909 @@
+/* ==========================================================
+   SUMAN SAHU PORTFOLIO
+   PHASE 1 - PART 1
+   ========================================================== */
+/* ===========================
+   Google Font
+=========================== */
+:root {
+    --bg: #09090B;
+    --surface: #18181B;
+    --surface-light: #27272A;
+    --text: #FAFAFA;
+    --muted: #A1A1AA;
+    --primary: #3B82F6;
+    --primary-light: #60A5FA;
+    --secondary: #8B5CF6;
+    --border: rgba(255, 255, 255, .08);
+    --shadow:
+        0 10px 40px rgba(0, 0, 0, .35);
+    --radius: 18px;
+    --transition: .35s ease;
+}
+/* ===========================
+   Reset
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+    position: relative;
+}
+/* ===========================
+   Animated Background
+=========================== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left,
+            rgba(59, 130, 246, .22),
+            transparent 45%),
+        radial-gradient(circle at bottom right,
+            rgba(139, 92, 246, .20),
+            transparent 45%),
+        radial-gradient(circle at center,
+            rgba(255, 255, 255, .02),
+            transparent 60%);
+    z-index: -2;
+    animation: gradientMove 18s ease infinite;
+}
+@keyframes gradientMove {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* ===========================
+   Particles
+=========================== */
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: .35;
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, .25) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+/* ===========================
+   Container
+=========================== */
+.container {
+    width: min(1180px, 90%);
+    margin: auto;
+}
+/* ===========================
+   Typography
+=========================== */
+h1 {
+    font-size: 4.8rem;
+    line-height: 1.05;
+    font-weight: 800;
+}
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+h4 {
+    color: var(--primary-light);
+    margin-bottom: 18px;
+}
+p {
+    color: var(--muted);
+    font-size: 1.08rem;
+}
+/* ===========================
+   Links
+=========================== */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* ===========================
+   Navbar
+=========================== */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.navbar {
+    width: min(1200px, 92%);
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    background: rgba(24, 24, 27, .45);
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: var(--transition);
+}
+.logo {
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+.nav-links a {
+    color: var(--muted);
+    transition: .25s;
+    font-weight: 500;
+}
+.nav-links a:hover {
+    color: var(--primary);
+}
+/* ===========================
+   Hero
+=========================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+}
+.hero-content {
+    max-width: 920px;
+}
+.hero span {
+    color: var(--primary);
+}
+.hero h2 {
+    margin-top: 22px;
+    margin-bottom: 28px;
+    font-size: 1.5rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+.hero p {
+    font-size: 1.25rem;
+    max-width: 760px;
+    margin: auto;
+}
+/* ===========================
+   Badge
+=========================== */
+.badge {
+    display: inline-block;
+    margin-bottom: 35px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, .12);
+    border: 1px solid rgba(59, 130, 246, .25);
+    color: var(--primary-light);
+    font-size: .92rem;
+    font-weight: 600;
+}
+/* ===========================
+   Buttons
+=========================== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 45px;
+}
+.primary,
+.secondary {
+    padding: 15px 32px;
+    border-radius: 999px;
+    transition: var(--transition);
+    font-weight: 600;
+}
+.primary {
+    background: linear-gradient(135deg,
+            var(--primary),
+            var(--secondary));
+    color: white;
+    box-shadow: 0 12px 30px rgba(59, 130, 246, .25);
+}
+.primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(59, 130, 246, .35);
+}
+.secondary {
+    border: 1px solid rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, .03);
+    backdrop-filter: blur(10px);
+}
+.secondary:hover {
+    background: rgba(255, 255, 255, .08);
+    transform: translateY(-4px);
+}
+/* ===========================
+   Scroll Indicator
+=========================== */
+.scroll {
+    margin-top: 70px;
+    color: var(--muted);
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(12px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+/* ===========================
+   Generic Sections
+=========================== */
+section {
+    padding: 110px 0;
+}
+section h2 {
+    text-align: center;
+}
+/* ===========================
+   Responsive
+=========================== */
+@media(max-width:900px) {
+    h1 {
+        font-size: 3.3rem;
+    }
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 28px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+}
+@media(max-width:600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1.05rem;
+    }
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .primary,
+    .secondary {
+        width: 240px;
+        text-align: center;
+    }
+}
+/* ==========================================================
+   PHASE 1 - PART 2
+   Cards • About • Experience • Projects • Skills • Contact
+   ==========================================================*/
+/* ==========================
+   About Section
+========================== */
+#about{
+    position:relative;
+}
+#about .container{
+    max-width:900px;
+    text-align:center;
+}
+#about p{
+    margin:20px auto;
+    font-size:1.12rem;
+    line-height:1.9;
+}
+/* ==========================
+   Generic Glass Card
+========================== */
+.card{
+    position:relative;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:38px;
+    backdrop-filter:blur(18px);
+    transition:.35s ease;
+    overflow:hidden;
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.20);
+}
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+        135deg,
+        rgba(59,130,246,.12),
+        transparent 40%);
+    opacity:0;
+    transition:.4s;
+}
+.card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(59,130,246,.35);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35);
+}
+.card:hover::before{
+    opacity:1;
+}
+.card h3{
+    color:white;
+}
+.card h4{
+    color:var(--primary);
+}
+.card p{
+    margin-top:10px;
+}
+/* ==========================
+   Experience
+========================== */
+#experience{
+    position:relative;
+}
+#experience .container{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+}
+#experience .card{
+    padding-left:45px;
+}
+#experience .card::after{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:45px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:
+        0 0 20px var(--primary);
+}
+/* ==========================
+   Projects
+========================== */
+.project-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+    margin-top:60px;
+}
+.project-grid .card{
+    min-height:280px;
+}
+.project-grid h3{
+    margin-bottom:20px;
+}
+.project-grid p{
+    line-height:1.8;
+}
+/* ==========================
+   Skills
+========================== */
+.skills{
+    margin-top:50px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:18px;
+}
+.skills span{
+    padding:15px 24px;
+    border-radius:999px;
+    background:
+        rgba(59,130,246,.08);
+    color:white;
+    border:1px solid rgba(59,130,246,.22);
+    transition:.3s;
+    cursor:default;
+    font-weight:500;
+}
+.skills span:hover{
+    transform:translateY(-5px);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+}
+/* ==========================
+   Contact
+========================== */
+#contact{
+    text-align:center;
+}
+#contact p{
+    max-width:650px;
+    margin:20px auto 45px;
+}
+/* ==========================
+   Footer
+========================== */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--muted);
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+/* ==========================
+   Hover Glow
+========================== */
+.primary,
+.secondary,
+.card,
+.skills span{
+    will-change:transform;
+}
+/* ==========================
+   Reveal Animation
+========================== */
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+/* ==========================
+   Card Floating Animation
+========================== */
+@keyframes floatCard{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-5px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+.project-grid .card:nth-child(1){
+    animation:floatCard 7s infinite ease-in-out;
+}
+.project-grid .card:nth-child(2){
+    animation:floatCard 8s infinite ease-in-out;
+}
+.project-grid .card:nth-child(3){
+    animation:floatCard 9s infinite ease-in-out;
+}
+/* ==========================
+   Section Fade Divider
+========================== */
+section{
+    position:relative;
+}
+section::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:150px;
+    height:1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+    transform:translateX(-50%);
+}
+/* ==========================
+   Mouse Selection
+========================== */
+::selection{
+    background:var(--primary);
+    color:white;
+}
+/* ==========================
+   Scrollbar
+========================== */
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-track{
+    background:#0b0b0e;
+}
+::-webkit-scrollbar-thumb{
+    background:#333;
+    border-radius:20px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background:var(--primary);
+}
+/* ==========================
+   Responsive
+========================== */
+@media(max-width:900px){
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+    .card{
+        padding:28px;
+    }
+    #experience .card{
+        padding-left:35px;
+    }
+}
+@media(max-width:600px){
+    .skills{
+        gap:12px;
+    }
+    .skills span{
+        font-size:.9rem;
+        padding:12px 18px;
+    }
+    .project-grid{
+        margin-top:35px;
+    }
+}
+/* ==========================================================
+   PHASE 1 - PART 3
+   Premium Effects • Animations • Timeline • Utilities
+   ========================================================== */
+/* ===========================
+   Animated Aurora Background
+=========================== */
+body::after{
+    content:"";
+    position:fixed;
+    inset:-25%;
+    z-index:-3;
+    background:
+        radial-gradient(circle,#3B82F620 0%,transparent 45%),
+        radial-gradient(circle,#8B5CF620 0%,transparent 45%),
+        radial-gradient(circle,#14B8A620 0%,transparent 45%);
+    background-size:35% 35%;
+    background-repeat:no-repeat;
+    animation:aurora 25s linear infinite;
+    filter:blur(80px);
+}
+@keyframes aurora{
+    0%{
+        background-position:
+        5% 15%,
+        90% 30%,
+        50% 85%;
+    }
+    50%{
+        background-position:
+        40% 60%,
+        15% 80%,
+        75% 20%;
+    }
+    100%{
+        background-position:
+        5% 15%,
+        90% 30%,
+        50% 85%;
+    }
+}
+/* ===========================
+   Navbar Scroll State
+=========================== */
+.navbar.scrolled{
+    background:rgba(18,18,20,.88);
+    backdrop-filter:blur(24px);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+}
+/* ===========================
+   Mouse Glow
+=========================== */
+.cursor-glow{
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    pointer-events:none;
+    background:
+        radial-gradient(circle,
+        rgba(59,130,246,.12),
+        transparent 70%);
+    transform:translate(-50%,-50%);
+    z-index:-1;
+    transition:
+        transform .08s linear;
+}
+/* ===========================
+   Timeline
+=========================== */
+.timeline{
+    position:relative;
+    margin-top:70px;
+}
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:25px;
+    top:0;
+    width:2px;
+    height:100%;
+    background:
+        linear-gradient(
+            var(--primary),
+            transparent
+        );
+}
+.timeline-item{
+    position:relative;
+    margin-left:70px;
+    margin-bottom:45px;
+}
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-55px;
+    top:8px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:
+        0 0 18px var(--primary);
+}
+/* ===========================
+   Section Heading Decoration
+=========================== */
+section h2{
+    position:relative;
+    display:inline-block;
+    left:50%;
+    transform:translateX(-50%);
+    padding-bottom:18px;
+}
+section h2::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:90px;
+    height:4px;
+    transform:translateX(-50%);
+    border-radius:999px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
+}
+/* ===========================
+   Card Shine Effect
+=========================== */
+.card{
+    isolation:isolate;
+}
+.card::after{
+    content:"";
+    position:absolute;
+    top:-120%;
+    left:-50%;
+    width:45%;
+    height:320%;
+    background:
+        linear-gradient(
+            rgba(255,255,255,0),
+            rgba(255,255,255,.10),
+            rgba(255,255,255,0)
+        );
+    transform:rotate(25deg);
+    transition:.8s;
+}
+.card:hover::after{
+    left:140%;
+}
+/* ===========================
+   Image Placeholder
+=========================== */
+.profile{
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+    transition:.4s;
+}
+.profile:hover{
+    transform:scale(1.05);
+}
+/* ===========================
+   Stats
+=========================== */
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:60px;
+    flex-wrap:wrap;
+}
+.stat{
+    text-align:center;
+}
+.stat h3{
+    font-size:2.8rem;
+    color:var(--primary);
+}
+.stat p{
+    margin-top:8px;
+}
+/* ===========================
+   Social Icons
+=========================== */
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:30px;
+}
+.socials a{
+    width:52px;
+    height:52px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+.socials a:hover{
+    background:var(--primary);
+    transform:translateY(-5px);
+}
+/* ===========================
+   Floating Animation
+=========================== */
+@keyframes floating{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+.badge{
+    animation:floating 5s ease infinite;
+}
+/* ===========================
+   Fade Up
+=========================== */
+.fade-up{
+    animation:fadeUp .8s ease forwards;
+}
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* ===========================
+   Loading Animation
+=========================== */
+.loading{
+    opacity:0;
+    animation:pageLoad .9s ease forwards;
+}
+@keyframes pageLoad{
+    to{
+        opacity:1;
+    }
+}
+/* ===========================
+   Utilities
+=========================== */
+.text-center{
+    text-align:center;
+}
+.mt-2{
+    margin-top:20px;
+}
+.mt-4{
+    margin-top:40px;
+}
+.mt-6{
+    margin-top:60px;
+}
+.hidden{
+    display:none;
+}
+/* ===========================
+   Accessibility
+=========================== */
+:focus-visible{
+    outline:2px solid var(--primary);
+    outline-offset:4px;
+}
+@media (prefers-reduced-motion:reduce){
+    *{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+}
+/* ===========================
+   Mobile Polish
+=========================== */
+@media(max-width:900px){
+    .timeline{
+        margin-left:10px;
+    }
+    .timeline-item{
+        margin-left:55px;
+    }
+    .stats{
+        gap:20px;
+    }
+}
+@media(max-width:600px){
+    .cursor-glow{
+        display:none;
+    }
+    .timeline::before{
+        left:18px;
+    }
+    .timeline-item::before{
+        left:-45px;
+    }
+    .stat h3{
+        font-size:2.2rem;
+    }
+    .profile{
+        width:170px;
+        height:170px;
+    }
+}
